@@ -1,6 +1,4 @@
 import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
-
 import { useMemo } from "react";
 import { IndianRupee, LineChart, ShieldCheck, Trash2 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
