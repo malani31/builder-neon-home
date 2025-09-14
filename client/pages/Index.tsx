@@ -1,7 +1,13 @@
 import { DemoResponse } from "@shared/api";
 import { useMemo } from "react";
 import { IndianRupee, LineChart, ShieldCheck, Trash2 } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import DemandChart, { DemandPoint } from "@/components/charts/DemandChart";
 import PreOrderForm from "@/components/orders/PreOrderForm";
 import { Button } from "@/components/ui/button";
@@ -31,16 +37,24 @@ export default function Index() {
       <section className="relative overflow-hidden border-b bg-gradient-to-b from-emerald-50 to-background">
         <div className="container grid gap-10 py-16 md:grid-cols-2 md:gap-12">
           <div className="flex flex-col justify-center">
-            <span className="inline-flex w-fit items-center rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">Colleges • PS09</span>
+            <span className="inline-flex w-fit items-center rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">
+              Colleges • PS09
+            </span>
             <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
               Smart Canteen
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              Predict demand with past purchase data and student feedback. Enable digital pre-orders and UPI payments while tracking food wastage in real time.
+              Predict demand with past purchase data and student feedback.
+              Enable digital pre-orders and UPI payments while tracking food
+              wastage in real time.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild size="lg"><a href="#preorder">Pre-Order Now</a></Button>
-              <Button asChild variant="secondary" size="lg"><a href="#forecast">View Dashboard</a></Button>
+              <Button asChild size="lg">
+                <a href="#preorder">Pre-Order Now</a>
+              </Button>
+              <Button asChild variant="secondary" size="lg">
+                <a href="#forecast">View Dashboard</a>
+              </Button>
             </div>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
               <div className="rounded-lg border bg-card p-4 text-center">
@@ -64,15 +78,25 @@ export default function Index() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2"><LineChart className="h-5 w-5" /> Demand Forecast</CardTitle>
-              <CardDescription>Moving average with feedback-adjusted projection</CardDescription>
+              <CardTitle className="flex items-center gap-2">
+                <LineChart className="h-5 w-5" /> Demand Forecast
+              </CardTitle>
+              <CardDescription>
+                Moving average with feedback-adjusted projection
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <DemandChart data={history} forecastDays={3} />
               <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                <div className="rounded-md bg-accent/60 p-3 text-sm">Model: 3-day MA + feedback</div>
-                <div className="rounded-md bg-accent/60 p-3 text-sm">Peak Day: Fri</div>
-                <div className="rounded-md bg-accent/60 p-3 text-sm">Next 3-day projection shown</div>
+                <div className="rounded-md bg-accent/60 p-3 text-sm">
+                  Model: 3-day MA + feedback
+                </div>
+                <div className="rounded-md bg-accent/60 p-3 text-sm">
+                  Peak Day: Fri
+                </div>
+                <div className="rounded-md bg-accent/60 p-3 text-sm">
+                  Next 3-day projection shown
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -84,7 +108,9 @@ export default function Index() {
         <div className="grid gap-6 md:grid-cols-3">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2"><LineChart className="h-5 w-5" /> Weekly Overview</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                <LineChart className="h-5 w-5" /> Weekly Overview
+              </CardTitle>
               <CardDescription>Past sales vs projected demand</CardDescription>
             </CardHeader>
             <CardContent>
@@ -93,8 +119,12 @@ export default function Index() {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2"><ShieldCheck className="h-5 w-5" /> UPI & Student ID</CardTitle>
-              <CardDescription>Secure payments and verified student identity</CardDescription>
+              <CardTitle className="flex items-center gap-2">
+                <ShieldCheck className="h-5 w-5" /> UPI & Student ID
+              </CardTitle>
+              <CardDescription>
+                Secure payments and verified student identity
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-muted-foreground">
               <p>• Generate UPI deep links instantly at checkout.</p>
@@ -104,8 +134,12 @@ export default function Index() {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2"><Trash2 className="h-5 w-5" /> Wastage Metrics</CardTitle>
-              <CardDescription>Track prepared vs sold to minimize waste</CardDescription>
+              <CardTitle className="flex items-center gap-2">
+                <Trash2 className="h-5 w-5" /> Wastage Metrics
+              </CardTitle>
+              <CardDescription>
+                Track prepared vs sold to minimize waste
+              </CardDescription>
             </CardHeader>
             <CardContent className="grid grid-cols-2 gap-3 text-sm">
               <div className="rounded-md border p-3">
@@ -130,17 +164,33 @@ export default function Index() {
         <div className="container grid gap-6 md:grid-cols-2">
           <div className="flex flex-col justify-center">
             <h2 className="text-3xl font-bold">Digital Pre-Order & Payment</h2>
-            <p className="mt-2 text-muted-foreground">Reserve your meal, skip the queue, and pay via UPI. Orders are linked to your student ID.</p>
+            <p className="mt-2 text-muted-foreground">
+              Reserve your meal, skip the queue, and pay via UPI. Orders are
+              linked to your student ID.
+            </p>
             <ul className="mt-4 grid grid-cols-1 gap-2 text-sm text-muted-foreground">
-              <li className="inline-flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-primary" />Realtime pickup slots</li>
-              <li className="inline-flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-primary" />UPI deep-link payments</li>
-              <li className="inline-flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-primary" />Verified student access</li>
+              <li className="inline-flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-primary" />
+                Realtime pickup slots
+              </li>
+              <li className="inline-flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-primary" />
+                UPI deep-link payments
+              </li>
+              <li className="inline-flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-primary" />
+                Verified student access
+              </li>
             </ul>
           </div>
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2"><IndianRupee className="h-5 w-5" /> Place Your Order</CardTitle>
-              <CardDescription>Choose an item, quantity, and pickup time</CardDescription>
+              <CardTitle className="flex items-center gap-2">
+                <IndianRupee className="h-5 w-5" /> Place Your Order
+              </CardTitle>
+              <CardDescription>
+                Choose an item, quantity, and pickup time
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <PreOrderForm />
@@ -154,7 +204,9 @@ export default function Index() {
         <Card>
           <CardHeader>
             <CardTitle>Food Wastage Tracking</CardTitle>
-            <CardDescription>Monitor daily variance and optimize preparation</CardDescription>
+            <CardDescription>
+              Monitor daily variance and optimize preparation
+            </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4 sm:grid-cols-3">
             {history.map((d) => {

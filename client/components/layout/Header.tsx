@@ -63,9 +63,15 @@ export function Header() {
             onClick={() => setDark((v) => !v)}
           >
             {dark ? (
-              <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-full bg-yellow-400" />Light</span>
+              <span className="inline-flex items-center gap-2">
+                <span className="h-3 w-3 rounded-full bg-yellow-400" />
+                Light
+              </span>
             ) : (
-              <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-full bg-emerald-400" />Dark</span>
+              <span className="inline-flex items-center gap-2">
+                <span className="h-3 w-3 rounded-full bg-emerald-400" />
+                Dark
+              </span>
             )}
           </Button>
           <Button asChild size="sm">

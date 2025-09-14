@@ -2,7 +2,13 @@ import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "sonner";
 import { IndianRupee, Timer } from "lucide-react";
 
@@ -29,7 +35,10 @@ export function PreOrderForm() {
   const [upi, setUpi] = useState("");
 
   const selected = useMemo(() => MENU.find((m) => m.id === item)!, [item]);
-  const amount = useMemo(() => Math.max(0, selected.price * qty), [selected.price, qty]);
+  const amount = useMemo(
+    () => Math.max(0, selected.price * qty),
+    [selected.price, qty],
+  );
 
   const upiUrl = useMemo(() => {
     const params = new URLSearchParams({
@@ -61,31 +70,56 @@ export function PreOrderForm() {
             </SelectTrigger>
             <SelectContent>
               {MENU.map((m) => (
-                <SelectItem key={m.id} value={m.id}>{m.name} • ₹{m.price}</SelectItem>
+                <SelectItem key={m.id} value={m.id}>
+                  {m.name} • ₹{m.price}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
         <div className="space-y-2">
           <Label>Quantity</Label>
-          <Input type="number" min={1} value={qty} onChange={(e) => setQty(Number(e.target.value))} />
+          <Input
+            type="number"
+            min={1}
+            value={qty}
+            onChange={(e) => setQty(Number(e.target.value))}
+          />
         </div>
         <div className="space-y-2">
-          <Label className="inline-flex items-center gap-2">Pickup Time <Timer className="h-4 w-4" /></Label>
-          <Input type="time" value={pickup} onChange={(e) => setPickup(e.target.value)} />
+          <Label className="inline-flex items-center gap-2">
+            Pickup Time <Timer className="h-4 w-4" />
+          </Label>
+          <Input
+            type="time"
+            value={pickup}
+            onChange={(e) => setPickup(e.target.value)}
+          />
         </div>
         <div className="space-y-2">
           <Label>Student ID</Label>
-          <Input placeholder="e.g. STU1234" value={studentId} onChange={(e) => setStudentId(e.target.value.toUpperCase())} />
+          <Input
+            placeholder="e.g. STU1234"
+            value={studentId}
+            onChange={(e) => setStudentId(e.target.value.toUpperCase())}
+          />
           {!studentId || isValidStudentId(studentId) ? null : (
-            <p className="text-xs text-destructive">Enter at least 6 alphanumeric characters.</p>
+            <p className="text-xs text-destructive">
+              Enter at least 6 alphanumeric characters.
+            </p>
           )}
         </div>
         <div className="space-y-2 sm:col-span-2">
           <Label>UPI ID</Label>
-          <Input placeholder="name@bank" value={upi} onChange={(e) => setUpi(e.target.value)} />
+          <Input
+            placeholder="name@bank"
+            value={upi}
+            onChange={(e) => setUpi(e.target.value)}
+          />
           {!upi || isValidUPI(upi) ? null : (
-            <p className="text-xs text-destructive">Enter a valid UPI ID, e.g. username@upi</p>
+            <p className="text-xs text-destructive">
+              Enter a valid UPI ID, e.g. username@upi
+            </p>
           )}
         </div>
       </div>
@@ -99,7 +133,9 @@ export function PreOrderForm() {
           </p>
         </div>
         <div className="flex gap-2">
-          <Button variant="secondary" onClick={submit} disabled={!canPay}>Place Order</Button>
+          <Button variant="secondary" onClick={submit} disabled={!canPay}>
+            Place Order
+          </Button>
           <Button asChild disabled={!canPay}>
             <a href={upiUrl}>Pay via UPI</a>
           </Button>
